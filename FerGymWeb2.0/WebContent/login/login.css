@@ -1,0 +1,8 @@
+.divHeaderBackground
+{
+	background-image: url(/FerGymWeb2.0/images/headerBackground.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
+    height: 70%;
+}
