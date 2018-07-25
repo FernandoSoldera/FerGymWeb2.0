@@ -5,12 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FerGymWeb</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="shortcut icon" href="/FerGymWeb2.0/images/logo.png" >
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="/FerGymWeb2.0/login/login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/FerGymWeb2.0/template/template.css"/>
+    
 </head>
 <body>
-	<div class="divHeaderBackground">
-		
+	<div id="templateHeader"></div>
+	
+	<div class="divLoginBackground">
+		<form class="divLogin" autocomplete="off">
+			<div class="divLoginTitle">
+				<label>LOGIN</label>
+			</div>
+			
+			<div class=divLoginContent>
+				<div>
+					<div class="inputInfo">
+						<span>E-MAIL</span>
+						<span id="validationEmail">* campo obrigatório</span>
+					</div>
+					<input type="text" id="inputEmail"/>
+				</div>
+				
+				<div>
+					<div class="inputInfo">
+						<span>SENHA</span>
+						<span id="validationPassword">* campo obrigatório</span>
+					</div>
+					<input type="password" id="inputPassword"/>
+				</div>
+			</div>
+			
+			<div class="divLoginFooter">
+				<input type="button" value="ENTRAR" onclick="loginRequest()">
+			</div>
+		</form>
 	</div>
+	
+	<div id="templateFooter"></div>
+	
+	<script type="text/javascript" src="/FerGymWeb2.0/utils/jquery/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/FerGymWeb2.0/login/login.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			inicializar();
+		});
+	</script>
 </body>
 </html>

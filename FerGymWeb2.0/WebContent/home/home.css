@@ -1,0 +1,26 @@
+.divHeaderBackground
+{
+	background-image: url("/FerGymWeb2.0/images/headerBackground.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
+.divHeaderBackground span
+{
+	font-size: 1.3em;
+	text-shadow: 4px 3px 1px black;
+	margin: 0.5em 0px;
+}
+#titleHeaderBackground
+{
+	color: yellow;
+	font-size: 2em;
+	font-weight: bold;
+	margin: 1em 0px;
+}
