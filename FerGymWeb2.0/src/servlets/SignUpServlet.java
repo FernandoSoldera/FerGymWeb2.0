@@ -8,21 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.json.JSONObject;
 
-import DAO.UserDAO;
 import model.User;
 import util.HibernateUtil;
 
-public class LoginServlet extends HttpServlet{
+public class SignUpServlet extends HttpServlet{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		JSONObject json = new JSONObject();
@@ -30,25 +28,29 @@ public class LoginServlet extends HttpServlet{
 		
 		try
 		{
-			if(email != null && !email.equals(""))
+			if(name != null && !name.equals(""))
 			{
-				if(password != null && !password.equals(""))
+				if(email != null && !email.equals(""))
 				{
-					session = HibernateUtil.getSessionFactory().openSession();
-		            session.beginTransaction();
-		            User user = new UserDAO().getUserByLogin(session, email, password);
-		            
-		            if(user != null)
-		            {
-		            	json.put("msg", "ok");
-			            json.put("email", user.getEmail());
-			            json.put("name", user.getName());
-		            }
-		            else { json.put("msg", "Invalid email or password"); }
+					if(password != null && !password.equals("") && password.length() > 5)
+					{
+						session = HibernateUtil.getSessionFactory().openSession();
+			            Transaction transaction = session.beginTransaction();
+			            
+			            User user = new User();
+			            user.setName(name);
+			            user.setEmail(email);
+			            user.setPassword(password);
+			            
+			            session.save(user);
+			            transaction.commit();
+			            json.put("msg", "ok");
+					}
+					else { json.put("msg", "Sua senha precisa ter mais de 5 caracteres"); }
 				}
-				else { json.put("msg", "Invalid email or password"); }
+				else { json.put("msg", "Por favor, digite um e-mail válido"); }
 			}
-			else { json.put("msg", "Invalid email or password"); }
+			else { json.put("msg", "Por favor, digite um nome"); }
 		}
 		catch (Exception e) { e.printStackTrace(); }
 		finally { if(session!=null) { session.close(); } }

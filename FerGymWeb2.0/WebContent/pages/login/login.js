@@ -1,8 +1,8 @@
 // Initialize components
 function inicializar()
 {
-	$("#templateHeader").load("/FerGymWeb2.0/template/templateHeader.html", function(){ $("#templateHeader").css("height", $(".divHeader").height() + "px"); });
-	$("#templateFooter").load("/FerGymWeb2.0/template/templateFooter.html");
+	$("#templateHeader").load("/FerGymWeb2.0/pages/template/templateHeader.html", function(){ $("#templateHeader").css("height", $(".divHeader").height() + "px"); });
+	$("#templateFooter").load("/FerGymWeb2.0/pages/template/templateFooter.html");
 	
 	//validate if inputs is filled and show the validation
 	$("input").on('input', function()
@@ -33,7 +33,13 @@ function loginRequest()
 	{
 		if((json.password != undefined && json.password != ""))
 		{
-			
+			$.ajax({
+				method: 'POST',
+				dataType: "json",
+				url: 'http://localhost:8080/FerGymWeb2.0/loginServlet',
+				data: json,
+				success: success
+			});
 		}
 		else
 		{
@@ -46,18 +52,17 @@ function loginRequest()
 		$("#inputEmail").addClass("inputError");
 		$("#validationEmail").css("display", "inline-block");
 	}
-	
-
-	$.ajax({
-		method: 'POST',
-		dataType: "json",
-		url: 'http://localhost:8080/FerGymWeb2.0/loginServlet',
-		data: json,
-		success: success
-	});
 }
 
+//Function to receive the servlet response
 function success(json)
 {
-	console.log(json);
+	if(json.msg == "ok")
+	{
+		alert('Logado com sucesso');
+	}
+	else
+	{
+		alert('Credenciais inválidas');
+	}
 }

@@ -25,7 +25,11 @@ public class UserDAO {
 		
 		@SuppressWarnings("unchecked")
 		List<Object> list = query.getResultList();
-		User user = (User) list.get(0);
-		return user;
+		if(!list.isEmpty())
+		{
+			User user = (User) list.get(0);
+			return user;
+		}
+		return null;
 	}
 }

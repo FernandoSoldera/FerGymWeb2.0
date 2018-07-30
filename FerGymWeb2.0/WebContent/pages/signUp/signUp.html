@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FerGymWeb</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/FerGymWeb2.0/images/logo.png" >
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="/FerGymWeb2.0/pages/signUp/signUp.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/FerGymWeb2.0/pages/template/template.css"/>
+    
+</head>
+<body>
+	<div id="templateHeader"></div>
+	
+	<div class="divSignUpBackground">
+		<div class="divSignUp">
+			<div>
+				<span class="spanTitle">Cadastro</span>
+			</div>
+			
+			<div class="divFields">
+				<div class="divField">
+					<label>Nome</label>
+					<input type="text" id="inputName"/>
+				</div>
+				<div class="divField">
+					<label>E-mail</label>
+					<input type="text" id="inputEmail"/>
+				</div>
+				<div class="divField">
+					<label>Senha</label>
+					<input type="password" id="inputPassword"/>
+				</div>
+			</div>
+			
+			<button onclick="signUpRequest()">Cadastrar</button>
+		</div>
+	</div>
+	
+	<div id="templateFooter"></div>
+	
+	<script type="text/javascript" src="/FerGymWeb2.0/utils/jquery/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="/FerGymWeb2.0/pages/signUp/signUp.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			inicializar();
+		});
+	</script>
+</body>
+</html>
