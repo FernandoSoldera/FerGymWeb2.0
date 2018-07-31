@@ -59,10 +59,10 @@ function success(json)
 {
 	if(json.msg == "ok")
 	{
-		alert('Logado com sucesso');
+		createNotification("Login", "Logado com sucesso", "success", 3000);
 	}
 	else
 	{
-		alert('Credenciais inválidas');
+		createNotification("Login", "Não foi possível logar, credenciais inválidas", "error", 3000);
 	}
 }
